@@ -2,8 +2,11 @@ pipeline {
   agent any
   stages {
     stage('build') {
+     dir("maven") {
+         sh "pwd"
+     }
       steps {
-        sh 'cd maven;mvn -B -DskipTests clean package'
+        sh 'mvn -B -DskipTests clean package'
       }
     }
     stage('test') {
